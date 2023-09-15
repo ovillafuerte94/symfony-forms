@@ -21,6 +21,8 @@ class PostType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Post::class,
+            // 'csrf_protection' => false
+            // 'csrf_field_name' => '_custom_token'
         ]);
     }
 }

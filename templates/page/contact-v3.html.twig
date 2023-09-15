@@ -11,6 +11,7 @@
 <div class="example-wrapper">
     <h1>Contact form! ✅</h1>
 
+    {% form_theme form 'bootstrap_5_horizontal_layout.html.twig' %}
     {{ form_start(form, {
             'method': 'POST',
             'attr': {'novalidate': 'novalidate'}

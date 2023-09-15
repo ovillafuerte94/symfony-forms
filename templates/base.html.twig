@@ -13,6 +13,30 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div class="container py-5">
+        {# 
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            {% for message in app.flashes('info') %}
+                <div class="alert alert-info" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        #}
+
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            {% block body %}{% endblock %}
+        </div>
     </body>
 </html>

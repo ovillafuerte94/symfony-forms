@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PageController extends AbstractController
 {
-    #[Route('/contact-v1', methods: ['GET', 'POST'])]
+    #[Route('/contact-v1', name: 'contact-v1', methods: ['GET', 'POST'])]
     public function contactV1(Request $request): Response
     {
         $form = $this->createFormBuilder()
@@ -30,7 +30,8 @@ class PageController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
-            dd($form->getData(), $request);
+            $this->addFlash('success', 'Test form Nº1 successfully');
+            $this->redirectToRoute('contact-v1');
         }
 
         return $this->render('page/contact-v1.html.twig', [
@@ -38,7 +39,7 @@ class PageController extends AbstractController
         ]);
     }
 
-    #[Route('/contact-v2', methods: ['GET', 'POST'])]
+    #[Route('/contact-v2',name: 'contact-v2', methods: ['GET', 'POST'])]
     public function contactV2(Request $request): Response
     {
         $form = $this->createForm(ContactType::class);
@@ -46,7 +47,8 @@ class PageController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
-            dd($form->getData());
+            $this->addFlash('success', 'Test form Nº2 successfully');
+            $this->redirectToRoute('contact-v2');
         }
 
         return $this->render('page/contact-v2.html.twig', [
@@ -54,7 +56,7 @@ class PageController extends AbstractController
         ]);
     }
 
-    #[Route('/contact-v3', methods: ['GET', 'POST'])]
+    #[Route('/contact-v3', name: 'contact-v3', methods: ['GET', 'POST'])]
     public function contactV3(Request $request): Response
     {
         $form = $this->createForm(ContactType::class);
@@ -62,7 +64,8 @@ class PageController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
-            dd($form->getData());
+            $this->addFlash('info', 'Test form Nº3 successfully');
+            $this->redirectToRoute('contact-v3');
         }
 
         return $this->render('page/contact-v3.html.twig', [

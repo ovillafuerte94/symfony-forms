@@ -19,7 +19,7 @@ class ContactType extends AbstractType
                 'label' => 'Comment, suggestion or message'
             ])
             ->add('save', SubmitType::class, [
-                'label' => 'Sent'
+                'label' => 'Send'
             ])
             ->setMethod('POST')
         ;
